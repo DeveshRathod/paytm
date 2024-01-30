@@ -18,9 +18,9 @@ const Users = () => {
           </div>
         </div>
         <div className=" p-6 sm:p-4">
-          <button className=" bg-black text-white rounded-md p-2">
-            <Link to="/send">Send Money</Link>
-          </button>
+          <Link to="/send" className=" bg-black text-white rounded-md p-2">
+            <button>Send Money</button>
+          </Link>
         </div>
       </div>
     </div>

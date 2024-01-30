@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Appbar = () => {
   return (
@@ -7,11 +8,13 @@ const Appbar = () => {
       <div className=" flex gap-3 items-center">
         <div>Hello, User</div>
         <div className=" w-10">
-          <img
-            className=" rounded-full"
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-            alt=""
-          />
+          <Link to="/">
+            <img
+              className=" rounded-full"
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+              alt=""
+            />
+          </Link>
         </div>
       </div>
     </div>

@@ -51,7 +51,7 @@ export const signup = async (req, res) => {
     );
     const account = new Account({
       userId,
-      balance: Math.floor(Math.random() * 10000),
+      balance: Number((Math.random() * 10000).toFixed(2)),
     });
 
     await account.save();
