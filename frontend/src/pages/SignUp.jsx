@@ -44,9 +44,12 @@ const SignUp = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center pb-10">
-          <button className="w-full bg-black text-white p-1.5 rounded-md">
-            <Link to="/dashboard">Sign Up</Link>
-          </button>
+          <Link
+            className="w-full bg-black text-white p-1.5 flex items-center justify-center rounded-md"
+            to="/dashboard"
+          >
+            <button>Sign Up</button>
+          </Link>
           <p>
             Already have an account? <Link to="/signin">Sign In</Link>
           </p>

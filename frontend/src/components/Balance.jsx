@@ -1,0 +1,13 @@
+import React from "react";
+
+const Balance = () => {
+  return (
+    <div className=" pl-6 sm:pl-10">
+      <h1 className=" text-xl">
+        <span className="  font-bold">Your Balance : </span>$100000
+      </h1>
+    </div>
+  );
+};
+
+export default Balance;

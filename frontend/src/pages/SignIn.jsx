@@ -28,9 +28,12 @@ const SignIn = () => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center pb-10">
-          <button className="w-full bg-black text-white p-1.5 rounded-md">
-            <Link to="/dashboard">Sign In</Link>
-          </button>
+          <Link
+            className="w-full bg-black text-white p-1.5 flex items-center justify-center rounded-md"
+            to="/dashboard"
+          >
+            <button>Sign In</button>
+          </Link>
           <p>
             Dont have an account? <Link to="/signup">Sign Up</Link>
           </p>
