@@ -1,11 +1,21 @@
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import Send from "./pages/Send";
 
-function App() {
-
+const App = () => {
   return (
     <div>
-        Hello world
+      <Routes>
+        <Route element={<Dashboard />} path="/dashboard" />
+        <Route element={<SignIn />} path="/signin" />
+        <Route element={<SignUp />} path="/signup" />
+        <Route element={<Send />} path="/send" />
+      </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
