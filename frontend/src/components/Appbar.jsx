@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Appbar = () => {
+const Appbar = ({ you }) => {
   return (
-    <div className=" flex p-6 sm:p-10 justify-between w-full">
-      <h1 className=" text-2xl font-bold">Payments App</h1>
+    <div className=" flex p-4 sm:p-10 justify-between w-full">
+      <h1 className=" text-xl sm:text-2xl font-bold">Payments App</h1>
       <div className=" flex gap-3 items-center">
-        <div>Hello, User</div>
+        <div>Hello, {you}</div>
         <div className=" w-10">
           <Link to="/">
             <img

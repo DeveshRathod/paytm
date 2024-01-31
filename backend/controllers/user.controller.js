@@ -28,7 +28,13 @@ export const signup = async (req, res) => {
       message: "Invalid input data",
     });
   }
-  const { username, firstName, lastName, password } = data;
+  let { username, firstName, lastName, password } = data;
+  if (firstName.length >= 7) {
+    firstName = firstName.substring(0, 7);
+  }
+  if (lastName.length >= 6) {
+    lastName = lastName.substring(0, 7);
+  }
   try {
     const user = await User({
       username,
@@ -56,8 +62,13 @@ export const signup = async (req, res) => {
 
     await account.save();
 
+    const userDetails = JSON.stringify({
+      username: firstName,
+    });
+
     res.status(201).json({
       message: "User created successfully",
+      userDetails,
       token,
     });
   } catch (error) {
@@ -90,7 +101,11 @@ export const signin = async (req, res) => {
         expiresIn: "24h",
       }
     );
+    const userDetails = JSON.stringify({
+      username: user.firstName,
+    });
     res.status(200).json({
+      userDetails,
       token,
     });
   } catch (error) {
@@ -141,22 +156,32 @@ export const getAll = async (req, res) => {
 
   try {
     const users = await User.find({});
-    const filteredUsers = users.filter((user) => {
-      return user.lastName === data || user.firstName === data;
-    });
 
-    if (filteredUsers.length > 0) {
-      const mappedUsers = filteredUsers.map(({ firstName, lastName, _id }) => ({
-        firstName,
-        lastName,
-        _id,
-      }));
-
-      res.status(200).json({ users: mappedUsers });
-    } else {
-      res.status(404).json({
-        message: "No users found",
+    if (data) {
+      const filteredUsers = users.filter((user) => {
+        return (
+          user.lastName.toLowerCase().includes(data.toLowerCase()) ||
+          user.firstName.toLowerCase().includes(data.toLowerCase())
+        );
       });
+
+      if (filteredUsers.length > 0) {
+        const mappedUsers = filteredUsers.map(
+          ({ firstName, lastName, _id }) => ({
+            firstName,
+            lastName,
+            _id,
+          })
+        );
+
+        res.status(200).json({ users: mappedUsers });
+      } else {
+        res.status(404).json({
+          message: "No matching users found",
+        });
+      }
+    } else {
+      res.status(200).json({ users });
     }
   } catch (error) {
     console.error(error);

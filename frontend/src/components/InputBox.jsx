@@ -8,6 +8,7 @@ const InputBox = ({ label, placeholder, onChange, type }) => {
         type={type}
         className="block w-80 rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none"
         placeholder={placeholder}
+        onChange={onChange}
       />
     </div>
   );

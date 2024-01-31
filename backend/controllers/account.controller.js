@@ -13,7 +13,7 @@ export const getBalance = async (req, res) => {
     }
 
     res.status(200).json({
-      balance: account.balance,
+      balance: account.balance.toFixed(2),
     });
   } catch (error) {
     res.status(404).json({
