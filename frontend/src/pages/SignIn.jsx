@@ -4,7 +4,7 @@ import CardPage from "../components/CardPage";
 import InputBox from "../components/InputBox";
 import LinkButton from "../components/LinkButton";
 
-const SignIn = () => {
+const SignIn = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -47,6 +47,7 @@ const SignIn = () => {
             }
           );
           const data = JSON.parse(response.data.userDetails);
+          setIsAuthenticated(true);
           localStorage.setItem("user", data.username);
           localStorage.setItem("token", response.data.token);
         }}

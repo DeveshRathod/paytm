@@ -190,3 +190,24 @@ export const getAll = async (req, res) => {
     });
   }
 };
+
+export const me = async (req, res) => {
+  const userId = req.userId;
+
+  try {
+    // Use async/await to wait for the findOne operation
+    const user = await User.findOne({ _id: userId });
+
+    if (user) {
+      // If user is found, return 200 OK with user data
+      res.status(200).send(true);
+    } else {
+      // If user is not found, return 404 Not Found
+      res.status(404).send(false);
+    }
+  } catch (error) {
+    // If an error occurs during the database operation, return 500 Internal Server Error
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};

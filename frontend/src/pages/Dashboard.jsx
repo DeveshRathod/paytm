@@ -4,7 +4,7 @@ import Appbar from "../components/Appbar";
 import Balance from "../components/Balance";
 import axios from "axios";
 
-const Dashboard = () => {
+const Dashboard = ({ setIsAuthenticated }) => {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState("");
   const [balance, setBalance] = useState(0);
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Appbar you={you} />
+      <Appbar you={you} setIsAuthenticated={setIsAuthenticated} />
       <Balance balance={balance} />
       <div className="pl-6 sm:pl-10">
         <h1 className="text-xl font-bold pt-5">Users</h1>

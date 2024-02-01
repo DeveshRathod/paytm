@@ -4,6 +4,7 @@ import {
   signup,
   update,
   getAll,
+  me,
 } from "../controllers/user.controller.js";
 import { authMiddleware } from "../middlewares/middleware.js";
 
@@ -13,5 +14,6 @@ router.post("/signup", signup);
 router.post("/signin", signin);
 router.put("/", authMiddleware, update);
 router.get("/bulk", authMiddleware, getAll);
+router.get("/me", authMiddleware, me);
 
 export default router;

@@ -8,13 +8,13 @@ const Appbar = ({ you }) => {
       <div className=" flex gap-3 items-center">
         <div>Hello, {you}</div>
         <div className=" w-10">
-          <Link to="/">
+          <button>
             <img
               className=" rounded-full"
               src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
               alt=""
             />
-          </Link>
+          </button>
         </div>
       </div>
     </div>

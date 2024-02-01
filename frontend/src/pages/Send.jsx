@@ -6,7 +6,7 @@ import axios from "axios";
 const Send = () => {
   const { id } = useParams();
   const token = "Bearer " + localStorage.getItem("token");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const navigate = useNavigate();
 
   const moneyTransfer = async () => {
@@ -31,7 +31,12 @@ const Send = () => {
   };
 
   const handleAmountChange = (e) => {
-    setAmount(e.target.value);
+    const value = e.target.value;
+
+    if (/^[0-9]*\.?[0-9]+$/.test(value)) {
+      // Update the state if it's a valid positive number
+      setAmount(value);
+    }
   };
 
   return (
